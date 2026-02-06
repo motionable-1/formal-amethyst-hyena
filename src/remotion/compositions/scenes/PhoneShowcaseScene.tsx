@@ -4,6 +4,7 @@ import {
   useVideoConfig,
   spring,
   interpolate,
+  Img,
   AbsoluteFill,
 } from "remotion";
 import { loadFont } from "@remotion/google-fonts/Inter";
@@ -164,63 +165,15 @@ export const PhoneShowcaseScene: React.FC = () => {
               reflection={0.1}
               scale={0.55}
             >
-              {/* Fake app screen */}
-              <div
+              {/* Generated app screen UI */}
+              <Img
+                src="https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/revid-promo/1770410371650_ivirv0id2u_revid_phone_screen.png"
                 style={{
                   width: "100%",
                   height: "100%",
-                  background:
-                    "linear-gradient(180deg, #0f1218 0%, #141820 100%)",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: 20,
-                  gap: 12,
+                  objectFit: "cover",
                 }}
-              >
-                {/* Fake video preview cards */}
-                <div
-                  style={{
-                    width: "85%",
-                    height: 120,
-                    borderRadius: 12,
-                    background:
-                      "linear-gradient(135deg, rgba(74,222,128,0.2) 0%, rgba(56,189,248,0.15) 100%)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                  }}
-                />
-                <div
-                  style={{
-                    width: "85%",
-                    height: 120,
-                    borderRadius: 12,
-                    background:
-                      "linear-gradient(135deg, rgba(168,85,247,0.2) 0%, rgba(236,72,153,0.15) 100%)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                  }}
-                />
-                <div
-                  style={{
-                    width: "85%",
-                    height: 120,
-                    borderRadius: 12,
-                    background:
-                      "linear-gradient(135deg, rgba(56,189,248,0.2) 0%, rgba(74,222,128,0.15) 100%)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                  }}
-                />
-                {/* Green CTA */}
-                <div
-                  style={{
-                    width: "70%",
-                    height: 36,
-                    borderRadius: 20,
-                    background: "linear-gradient(135deg, #4ade80, #22c55e)",
-                    marginTop: 8,
-                  }}
-                />
-              </div>
+              />
             </PhoneMockup>
           </AnimatedGlow>
         </div>

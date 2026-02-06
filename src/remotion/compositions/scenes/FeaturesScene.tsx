@@ -20,7 +20,7 @@ const { fontFamily } = loadFont("normal", {
 });
 
 interface FeatureCardProps {
-  icon: string;
+  illustration: string;
   title: string;
   description: string;
   color: string;
@@ -29,7 +29,7 @@ interface FeatureCardProps {
 }
 
 const FeatureCard: React.FC<FeatureCardProps> = ({
-  icon,
+  illustration,
   title,
   description,
   color,
@@ -83,23 +83,27 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
         }}
       />
 
-      {/* Icon */}
-      <Glow color={color} intensity={12} pulsate pulseDuration={3}>
+      {/* 3D Illustration */}
+      <Glow color={color} intensity={14} pulsate pulseDuration={3} layers={2}>
         <div
           style={{
             transform: `translateY(${iconFloat}px)`,
-            width: 52,
-            height: 52,
-            borderRadius: 14,
-            background: `${color}15`,
-            border: `1px solid ${color}30`,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            width: 100,
+            height: 100,
+            borderRadius: 20,
+            overflow: "hidden",
             marginBottom: 20,
+            position: "relative",
           }}
         >
-          <Img src={icon} style={{ width: 28, height: 28 }} />
+          <Img
+            src={illustration}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
         </div>
       </Glow>
 
@@ -133,19 +137,22 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 
 const features = [
   {
-    icon: "https://api.iconify.design/heroicons/sparkles.svg?color=%234ade80&width=28",
+    illustration:
+      "https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/revid-promo/1770410368240_vkx56gyhbs_revid_ai_icon.png",
     title: "AI-Powered",
     description: "Generate scripts, scenes & edits with intelligent AI",
     color: "#4ade80",
   },
   {
-    icon: "https://api.iconify.design/heroicons/bolt.svg?color=%2338bdf8&width=28",
+    illustration:
+      "https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/revid-promo/1770410369196_3hlb5qo8nk8_revid_lightning_icon.png",
     title: "Lightning Fast",
     description: "From idea to finished video in under 2 minutes",
     color: "#38bdf8",
   },
   {
-    icon: "https://api.iconify.design/heroicons/chart-bar.svg?color=%23a855f7&width=28",
+    illustration:
+      "https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/revid-promo/1770410370327_g8a8rv7bg4p_revid_chart_icon.png",
     title: "Viral Optimized",
     description: "Built-in trends analysis for maximum engagement",
     color: "#a855f7",

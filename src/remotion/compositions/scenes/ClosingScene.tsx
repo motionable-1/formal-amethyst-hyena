@@ -71,7 +71,22 @@ export const ClosingScene: React.FC = () => {
     <AbsoluteFill
       style={{ backgroundColor: "#0a0a0f", fontFamily, overflow: "hidden" }}
     >
-      {/* Grid background */}
+      {/* Generated aurora background */}
+      <Img
+        src="https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/revid-promo/1770410372556_h75s5mrwiuj_revid_closing_bg.png"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          opacity: 0.35,
+          transform: `scale(${bgPulse + 0.05})`,
+        }}
+      />
+
+      {/* Grid background on top */}
       <GridBackground
         cellSize={55}
         color="rgba(74, 222, 128, 0.03)"

@@ -67,7 +67,22 @@ export const HeroScene: React.FC = () => {
     <AbsoluteFill
       style={{ backgroundColor: "#0a0a0f", fontFamily, overflow: "hidden" }}
     >
-      {/* Animated grid */}
+      {/* Generated hero background image */}
+      <Img
+        src="https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/revid-promo/1770410367124_3zghsod7yyd_revid_hero_bg.png"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          opacity: 0.4,
+          transform: `scale(${bgPulse + 0.05})`,
+        }}
+      />
+
+      {/* Animated grid on top of image */}
       <GridBackground
         cellSize={60}
         color="rgba(74, 222, 128, 0.04)"
@@ -78,7 +93,7 @@ export const HeroScene: React.FC = () => {
         fadeEdges
       />
 
-      {/* Large ambient glow orbs */}
+      {/* Floating ambient glow orbs */}
       <div
         style={{
           position: "absolute",
