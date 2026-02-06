@@ -1,69 +1,78 @@
-import { AbsoluteFill, Artifact, useCurrentFrame } from "remotion";
-import { TextAnimation } from "../library/components/text/TextAnimation";
-import { loadFont } from "@remotion/google-fonts/Inter";
+import { Artifact, useCurrentFrame } from "remotion";
+import { TransitionSeries, linearTiming } from "@remotion/transitions";
+import { blurDissolve } from "../library/components/layout/transitions/presentations/blurDissolve";
+import { HeroScene } from "./scenes/HeroScene";
+import { FeaturesScene } from "./scenes/FeaturesScene";
+import { PhoneShowcaseScene } from "./scenes/PhoneShowcaseScene";
+import { SocialProofScene } from "./scenes/SocialProofScene";
+import { ClosingScene } from "./scenes/ClosingScene";
 
-// This re-runs on every HMR update of this file
-const hmrKey = Date.now();
+// Scene durations (in frames at 30fps)
+const HERO_DURATION = 120; // 4s
+const FEATURES_DURATION = 120; // 4s
+const PHONE_DURATION = 120; // 4s
+const SOCIAL_DURATION = 120; // 4s
+const CLOSING_DURATION = 150; // 5s (extra hold at end)
+
+// Transition duration
+const TRANSITION_DURATION = 20; // ~0.67s
 
 export const Main: React.FC = () => {
-  const { fontFamily } = loadFont();
   const frame = useCurrentFrame();
+
   return (
     <>
-      {/* Leave this here to generate a thumbnail */}
+      {/* Thumbnail */}
       {frame === 0 && (
         <Artifact content={Artifact.Thumbnail} filename="thumbnail.jpeg" />
       )}
-      <AbsoluteFill className="flex items-center justify-center bg-white">
-        <TextAnimation
-          key={hmrKey}
-          className="text-5xl font-bold text-center"
-          style={{ fontFamily }}
-          createTimeline={({ textRef, tl, SplitText }) => {
-            // Split the text into individual characters using the ref
-            const splitText = new SplitText(textRef.current, {
-              type: "chars",
-              charsClass: "char",
-            });
 
-            // Use fromTo to ensure initial state is part of the timeline
-            tl.fromTo(
-              splitText.chars,
-              {
-                opacity: 0,
-                y: 50,
-                rotationX: 90,
-              },
-              {
-                opacity: 1,
-                y: 0,
-                rotationX: 0,
-                duration: 0.8,
-                stagger: 0.05,
-                ease: "back.out(1.7)",
-              },
-            );
+      <TransitionSeries>
+        {/* Scene 1: Hero */}
+        <TransitionSeries.Sequence durationInFrames={HERO_DURATION}>
+          <HeroScene />
+        </TransitionSeries.Sequence>
 
-            // Optional: Add a subtle hover effect that scales characters
-            tl.to(
-              splitText.chars,
-              {
-                scale: 1.1,
-                duration: 0.3,
-                stagger: 0.02,
-                yoyo: true,
-                repeat: 1,
-                ease: "power2.inOut",
-              },
-              "+=0.5",
-            );
+        <TransitionSeries.Transition
+          presentation={blurDissolve()}
+          timing={linearTiming({ durationInFrames: TRANSITION_DURATION })}
+        />
 
-            return tl;
-          }}
-        >
-          welcome to <span className="text-blue-400 font-light">Motionabl</span>
-        </TextAnimation>
-      </AbsoluteFill>
+        {/* Scene 2: Features */}
+        <TransitionSeries.Sequence durationInFrames={FEATURES_DURATION}>
+          <FeaturesScene />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition
+          presentation={blurDissolve()}
+          timing={linearTiming({ durationInFrames: TRANSITION_DURATION })}
+        />
+
+        {/* Scene 3: Phone Showcase */}
+        <TransitionSeries.Sequence durationInFrames={PHONE_DURATION}>
+          <PhoneShowcaseScene />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition
+          presentation={blurDissolve()}
+          timing={linearTiming({ durationInFrames: TRANSITION_DURATION })}
+        />
+
+        {/* Scene 4: Social Proof */}
+        <TransitionSeries.Sequence durationInFrames={SOCIAL_DURATION}>
+          <SocialProofScene />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition
+          presentation={blurDissolve()}
+          timing={linearTiming({ durationInFrames: TRANSITION_DURATION })}
+        />
+
+        {/* Scene 5: Closing CTA */}
+        <TransitionSeries.Sequence durationInFrames={CLOSING_DURATION}>
+          <ClosingScene />
+        </TransitionSeries.Sequence>
+      </TransitionSeries>
     </>
   );
 };
