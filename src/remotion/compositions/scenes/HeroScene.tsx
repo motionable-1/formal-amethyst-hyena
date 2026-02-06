@@ -8,7 +8,10 @@ import {
   AbsoluteFill,
 } from "remotion";
 import { loadFont } from "@remotion/google-fonts/Inter";
-import { FadeInChars, BlurReveal } from "../../library/components/text/TextAnimation";
+import {
+  FadeInChars,
+  BlurReveal,
+} from "../../library/components/text/TextAnimation";
 import { Glow } from "../../library/components/effects/Glow";
 import { GridBackground } from "../../library/components/effects/GridBackground";
 
@@ -22,8 +25,14 @@ export const HeroScene: React.FC = () => {
   const { fps } = useVideoConfig();
 
   // Logo entrance
-  const logoScale = spring({ frame, fps, config: { damping: 12, stiffness: 100 } });
-  const logoOpacity = interpolate(frame, [0, 12], [0, 1], { extrapolateRight: "clamp" });
+  const logoScale = spring({
+    frame,
+    fps,
+    config: { damping: 12, stiffness: 100 },
+  });
+  const logoOpacity = interpolate(frame, [0, 12], [0, 1], {
+    extrapolateRight: "clamp",
+  });
 
   // Headline entrance delay
   const headlineDelay = 18;
@@ -33,8 +42,15 @@ export const HeroScene: React.FC = () => {
 
   // CTA button entrance
   const ctaDelay = 55;
-  const ctaProgress = spring({ frame: frame - ctaDelay, fps, config: { damping: 14, stiffness: 120 } });
-  const ctaOpacity = interpolate(frame - ctaDelay, [0, 8], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const ctaProgress = spring({
+    frame: frame - ctaDelay,
+    fps,
+    config: { damping: 14, stiffness: 120 },
+  });
+  const ctaOpacity = interpolate(frame - ctaDelay, [0, 8], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
   const ctaY = interpolate(ctaProgress, [0, 1], [30, 0]);
 
   // Floating orbs
@@ -48,7 +64,9 @@ export const HeroScene: React.FC = () => {
   const bgPulse = Math.sin(frame * 0.02) * 0.03 + 1;
 
   return (
-    <AbsoluteFill style={{ backgroundColor: "#0a0a0f", fontFamily, overflow: "hidden" }}>
+    <AbsoluteFill
+      style={{ backgroundColor: "#0a0a0f", fontFamily, overflow: "hidden" }}
+    >
       {/* Animated grid */}
       <GridBackground
         cellSize={60}
@@ -69,7 +87,8 @@ export const HeroScene: React.FC = () => {
           width: 500,
           height: 500,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(74,222,128,0.12) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(74,222,128,0.12) 0%, transparent 70%)",
           transform: `translate(${orb1X}px, ${orb1Y}px) scale(${bgPulse})`,
           filter: "blur(40px)",
         }}
@@ -82,7 +101,8 @@ export const HeroScene: React.FC = () => {
           width: 400,
           height: 400,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 70%)",
           transform: `translate(${orb2X}px, ${orb2Y}px)`,
           filter: "blur(50px)",
         }}
@@ -95,7 +115,8 @@ export const HeroScene: React.FC = () => {
           width: 300,
           height: 300,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 70%)",
           transform: `translateY(${orb3Y}px)`,
           filter: "blur(35px)",
         }}
@@ -112,7 +133,13 @@ export const HeroScene: React.FC = () => {
         }}
       >
         {/* Logo */}
-        <Glow color="#4ade80" intensity={15} pulsate pulseDuration={3} layers={2}>
+        <Glow
+          color="#4ade80"
+          intensity={15}
+          pulsate
+          pulseDuration={3}
+          layers={2}
+        >
           <div
             style={{
               opacity: logoOpacity,
@@ -177,7 +204,8 @@ export const HeroScene: React.FC = () => {
             textWrap: "balance",
           }}
         >
-          Turn ideas into attention-grabbing TikTok, Instagram & YouTube content with AI
+          Turn ideas into attention-grabbing TikTok, Instagram & YouTube content
+          with AI
         </BlurReveal>
 
         {/* CTA Button */}
@@ -188,7 +216,13 @@ export const HeroScene: React.FC = () => {
             marginTop: 48,
           }}
         >
-          <Glow color="#4ade80" intensity={20} pulsate pulseDuration={2.5} layers={2}>
+          <Glow
+            color="#4ade80"
+            intensity={20}
+            pulsate
+            pulseDuration={2.5}
+            layers={2}
+          >
             <div
               style={{
                 background: "linear-gradient(135deg, #4ade80 0%, #22c55e 100%)",

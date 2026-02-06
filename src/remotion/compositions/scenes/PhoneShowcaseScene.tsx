@@ -4,13 +4,15 @@ import {
   useVideoConfig,
   spring,
   interpolate,
-  Img,
   AbsoluteFill,
 } from "remotion";
 import { loadFont } from "@remotion/google-fonts/Inter";
-import { FadeInChars, WaveText } from "../../library/components/text/TextAnimation";
+import {
+  FadeInChars,
+  WaveText,
+} from "../../library/components/text/TextAnimation";
 import { PhoneMockup } from "../../library/components/mockups/PhoneMockup";
-import { Glow, AnimatedGlow } from "../../library/components/effects/Glow";
+import { AnimatedGlow } from "../../library/components/effects/Glow";
 
 const { fontFamily } = loadFont("normal", {
   weights: ["400", "600", "700", "800"],
@@ -28,7 +30,9 @@ export const PhoneShowcaseScene: React.FC = () => {
     config: { damping: 15, stiffness: 80 },
   });
   const phoneY = interpolate(phoneEntrance, [0, 1], [120, 0]);
-  const phoneOpacity = interpolate(frame, [0, 15], [0, 1], { extrapolateRight: "clamp" });
+  const phoneOpacity = interpolate(frame, [0, 15], [0, 1], {
+    extrapolateRight: "clamp",
+  });
 
   // Gentle phone float
   const phoneFloat = Math.sin(frame * 0.04) * 6;
@@ -43,7 +47,9 @@ export const PhoneShowcaseScene: React.FC = () => {
   const orbY = Math.sin(frame * 0.035) * 15;
 
   return (
-    <AbsoluteFill style={{ backgroundColor: "#0a0a0f", fontFamily, overflow: "hidden" }}>
+    <AbsoluteFill
+      style={{ backgroundColor: "#0a0a0f", fontFamily, overflow: "hidden" }}
+    >
       {/* Background glow */}
       <div
         style={{
@@ -54,7 +60,8 @@ export const PhoneShowcaseScene: React.FC = () => {
           width: 600,
           height: 600,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(74,222,128,0.1) 0%, rgba(56,189,248,0.05) 40%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(74,222,128,0.1) 0%, rgba(56,189,248,0.05) 40%, transparent 70%)",
           filter: "blur(60px)",
         }}
       />
@@ -106,7 +113,14 @@ export const PhoneShowcaseScene: React.FC = () => {
           </FadeInChars>
 
           {/* Stats */}
-          <div style={{ marginTop: 48, display: "flex", flexDirection: "column", gap: 20 }}>
+          <div
+            style={{
+              marginTop: 48,
+              display: "flex",
+              flexDirection: "column",
+              gap: 20,
+            }}
+          >
             <StatItem
               value="10M+"
               label="Videos created"
@@ -135,14 +149,28 @@ export const PhoneShowcaseScene: React.FC = () => {
             transform: `translateY(${phoneY + phoneFloat}px) rotate(${phoneRotate}deg)`,
           }}
         >
-          <AnimatedGlow color="#4ade80" intensity={25} duration={0.8} pulsateAfter pulseDuration={3} layers={2}>
-            <PhoneMockup device="iphone-15" color="black" shadow reflection={0.1} scale={0.55}>
+          <AnimatedGlow
+            color="#4ade80"
+            intensity={25}
+            duration={0.8}
+            pulsateAfter
+            pulseDuration={3}
+            layers={2}
+          >
+            <PhoneMockup
+              device="iphone-15"
+              color="black"
+              shadow
+              reflection={0.1}
+              scale={0.55}
+            >
               {/* Fake app screen */}
               <div
                 style={{
                   width: "100%",
                   height: "100%",
-                  background: "linear-gradient(180deg, #0f1218 0%, #141820 100%)",
+                  background:
+                    "linear-gradient(180deg, #0f1218 0%, #141820 100%)",
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
@@ -152,35 +180,46 @@ export const PhoneShowcaseScene: React.FC = () => {
                 }}
               >
                 {/* Fake video preview cards */}
-                <div style={{
-                  width: "85%",
-                  height: 120,
-                  borderRadius: 12,
-                  background: "linear-gradient(135deg, rgba(74,222,128,0.2) 0%, rgba(56,189,248,0.15) 100%)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                }} />
-                <div style={{
-                  width: "85%",
-                  height: 120,
-                  borderRadius: 12,
-                  background: "linear-gradient(135deg, rgba(168,85,247,0.2) 0%, rgba(236,72,153,0.15) 100%)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                }} />
-                <div style={{
-                  width: "85%",
-                  height: 120,
-                  borderRadius: 12,
-                  background: "linear-gradient(135deg, rgba(56,189,248,0.2) 0%, rgba(74,222,128,0.15) 100%)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                }} />
+                <div
+                  style={{
+                    width: "85%",
+                    height: 120,
+                    borderRadius: 12,
+                    background:
+                      "linear-gradient(135deg, rgba(74,222,128,0.2) 0%, rgba(56,189,248,0.15) 100%)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                  }}
+                />
+                <div
+                  style={{
+                    width: "85%",
+                    height: 120,
+                    borderRadius: 12,
+                    background:
+                      "linear-gradient(135deg, rgba(168,85,247,0.2) 0%, rgba(236,72,153,0.15) 100%)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                  }}
+                />
+                <div
+                  style={{
+                    width: "85%",
+                    height: 120,
+                    borderRadius: 12,
+                    background:
+                      "linear-gradient(135deg, rgba(56,189,248,0.2) 0%, rgba(74,222,128,0.15) 100%)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                  }}
+                />
                 {/* Green CTA */}
-                <div style={{
-                  width: "70%",
-                  height: 36,
-                  borderRadius: 20,
-                  background: "linear-gradient(135deg, #4ade80, #22c55e)",
-                  marginTop: 8,
-                }} />
+                <div
+                  style={{
+                    width: "70%",
+                    height: 36,
+                    borderRadius: 20,
+                    background: "linear-gradient(135deg, #4ade80, #22c55e)",
+                    marginTop: 8,
+                  }}
+                />
               </div>
             </PhoneMockup>
           </AnimatedGlow>

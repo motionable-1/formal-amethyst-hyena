@@ -8,7 +8,11 @@ import {
   AbsoluteFill,
 } from "remotion";
 import { loadFont } from "@remotion/google-fonts/Inter";
-import { FadeInChars, BlurReveal, HackerText } from "../../library/components/text/TextAnimation";
+import {
+  FadeInChars,
+  BlurReveal,
+  HackerText,
+} from "../../library/components/text/TextAnimation";
 import { Glow, AnimatedGlow } from "../../library/components/effects/Glow";
 import { GridBackground } from "../../library/components/effects/GridBackground";
 import { ShimmerText } from "../../library/components/effects/Shimmer";
@@ -23,23 +27,39 @@ export const ClosingScene: React.FC = () => {
   const { fps } = useVideoConfig();
 
   // Logo entrance
-  const logoEntrance = spring({ frame: frame - 5, fps, config: { damping: 12, stiffness: 90 } });
-  const logoOpacity = interpolate(frame - 5, [0, 10], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const logoEntrance = spring({
+    frame: frame - 5,
+    fps,
+    config: { damping: 12, stiffness: 90 },
+  });
+  const logoOpacity = interpolate(frame - 5, [0, 10], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
   const logoScale = interpolate(logoEntrance, [0, 1], [0.6, 1]);
 
   // CTA entrance
   const ctaDelay = 45;
-  const ctaEntrance = spring({ frame: frame - ctaDelay, fps, config: { damping: 14, stiffness: 120 } });
-  const ctaOpacity = interpolate(frame - ctaDelay, [0, 10], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const ctaEntrance = spring({
+    frame: frame - ctaDelay,
+    fps,
+    config: { damping: 14, stiffness: 120 },
+  });
+  const ctaOpacity = interpolate(frame - ctaDelay, [0, 10], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
   const ctaY = interpolate(ctaEntrance, [0, 1], [30, 0]);
 
   // URL entrance
   const urlDelay = 58;
-  const urlOpacity = interpolate(frame - urlDelay, [0, 15], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const urlOpacity = interpolate(frame - urlDelay, [0, 15], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
 
   // Ambient floating orbs
   const orb1Y = Math.sin(frame * 0.04) * 15;
-  const orb1X = Math.cos(frame * 0.03) * 10;
   const orb2Y = Math.cos(frame * 0.035) * 18;
   const orb2X = Math.sin(frame * 0.028) * 12;
   const orb3Y = Math.sin(frame * 0.045) * 8;
@@ -48,7 +68,9 @@ export const ClosingScene: React.FC = () => {
   const bgPulse = Math.sin(frame * 0.025) * 0.04 + 1;
 
   return (
-    <AbsoluteFill style={{ backgroundColor: "#0a0a0f", fontFamily, overflow: "hidden" }}>
+    <AbsoluteFill
+      style={{ backgroundColor: "#0a0a0f", fontFamily, overflow: "hidden" }}
+    >
       {/* Grid background */}
       <GridBackground
         cellSize={55}
@@ -70,7 +92,8 @@ export const ClosingScene: React.FC = () => {
           width: 700,
           height: 700,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(74,222,128,0.12) 0%, rgba(56,189,248,0.04) 40%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(74,222,128,0.12) 0%, rgba(56,189,248,0.04) 40%, transparent 70%)",
           filter: "blur(80px)",
         }}
       />
@@ -82,7 +105,8 @@ export const ClosingScene: React.FC = () => {
           width: 300,
           height: 300,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 70%)",
           transform: `translate(${orb2X}px, ${orb2Y}px)`,
           filter: "blur(40px)",
         }}
@@ -95,7 +119,8 @@ export const ClosingScene: React.FC = () => {
           width: 250,
           height: 250,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(56,189,248,0.06) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(56,189,248,0.06) 0%, transparent 70%)",
           transform: `translateY(${orb3Y}px)`,
           filter: "blur(35px)",
         }}
@@ -119,7 +144,14 @@ export const ClosingScene: React.FC = () => {
             marginBottom: 36,
           }}
         >
-          <AnimatedGlow color="#4ade80" intensity={30} duration={0.8} pulsateAfter pulseDuration={2.5} layers={3}>
+          <AnimatedGlow
+            color="#4ade80"
+            intensity={30}
+            duration={0.8}
+            pulsateAfter
+            pulseDuration={2.5}
+            layers={3}
+          >
             <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
               <Img
                 src="https://api.iconify.design/heroicons/play-solid.svg?color=%234ade80&width=56"
@@ -157,7 +189,11 @@ export const ClosingScene: React.FC = () => {
           }}
         >
           Start creating{" "}
-          <ShimmerText baseColor="#4ade80" highlightColor="#ffffff" duration={2.5}>
+          <ShimmerText
+            baseColor="#4ade80"
+            highlightColor="#ffffff"
+            duration={2.5}
+          >
             viral content
           </ShimmerText>{" "}
           today
@@ -187,7 +223,13 @@ export const ClosingScene: React.FC = () => {
             marginTop: 44,
           }}
         >
-          <Glow color="#4ade80" intensity={25} pulsate pulseDuration={2} layers={3}>
+          <Glow
+            color="#4ade80"
+            intensity={25}
+            pulsate
+            pulseDuration={2}
+            layers={3}
+          >
             <div
               style={{
                 background: "linear-gradient(135deg, #4ade80 0%, #22c55e 100%)",

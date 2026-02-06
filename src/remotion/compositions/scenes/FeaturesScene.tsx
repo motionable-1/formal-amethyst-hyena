@@ -8,7 +8,10 @@ import {
   AbsoluteFill,
 } from "remotion";
 import { loadFont } from "@remotion/google-fonts/Inter";
-import { FadeInWords, SlideInText } from "../../library/components/text/TextAnimation";
+import {
+  FadeInWords,
+  SlideInText,
+} from "../../library/components/text/TextAnimation";
 import { Glow } from "../../library/components/effects/Glow";
 
 const { fontFamily } = loadFont("normal", {
@@ -96,10 +99,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
             marginBottom: 20,
           }}
         >
-          <Img
-            src={icon}
-            style={{ width: 28, height: 28 }}
-          />
+          <Img src={icon} style={{ width: 28, height: 28 }} />
         </div>
       </Glow>
 
@@ -160,7 +160,9 @@ export const FeaturesScene: React.FC = () => {
   const orbX = Math.cos(frame * 0.025) * 8;
 
   return (
-    <AbsoluteFill style={{ backgroundColor: "#0a0a0f", fontFamily, overflow: "hidden" }}>
+    <AbsoluteFill
+      style={{ backgroundColor: "#0a0a0f", fontFamily, overflow: "hidden" }}
+    >
       {/* Ambient glow */}
       <div
         style={{
@@ -170,7 +172,8 @@ export const FeaturesScene: React.FC = () => {
           width: 400,
           height: 400,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(74,222,128,0.06) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(74,222,128,0.06) 0%, transparent 70%)",
           transform: `translate(${orbX}px, ${orbY}px)`,
           filter: "blur(50px)",
         }}
@@ -183,7 +186,8 @@ export const FeaturesScene: React.FC = () => {
           width: 350,
           height: 350,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 70%)",
           transform: `translateY(${-orbY}px)`,
           filter: "blur(40px)",
         }}

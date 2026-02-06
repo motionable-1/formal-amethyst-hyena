@@ -4,11 +4,13 @@ import {
   useVideoConfig,
   spring,
   interpolate,
-  Img,
   AbsoluteFill,
 } from "remotion";
 import { loadFont } from "@remotion/google-fonts/Inter";
-import { FadeInWords, BounceChars } from "../../library/components/text/TextAnimation";
+import {
+  FadeInWords,
+  BounceChars,
+} from "../../library/components/text/TextAnimation";
 import { Counter } from "../../library/components/text/Counter";
 import { Glow } from "../../library/components/effects/Glow";
 
@@ -26,7 +28,14 @@ interface MetricProps {
   index: number;
 }
 
-const Metric: React.FC<MetricProps> = ({ value, suffix, label, color, delay, index }) => {
+const Metric: React.FC<MetricProps> = ({
+  value,
+  suffix,
+  label,
+  color,
+  delay,
+  index,
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -134,7 +143,9 @@ export const SocialProofScene: React.FC = () => {
   const orbX = Math.cos(frame * 0.025) * 8;
 
   return (
-    <AbsoluteFill style={{ backgroundColor: "#0a0a0f", fontFamily, overflow: "hidden" }}>
+    <AbsoluteFill
+      style={{ backgroundColor: "#0a0a0f", fontFamily, overflow: "hidden" }}
+    >
       {/* Ambient orbs */}
       <div
         style={{
@@ -145,7 +156,8 @@ export const SocialProofScene: React.FC = () => {
           width: 700,
           height: 400,
           borderRadius: "50%",
-          background: "radial-gradient(ellipse, rgba(74,222,128,0.06) 0%, transparent 60%)",
+          background:
+            "radial-gradient(ellipse, rgba(74,222,128,0.06) 0%, transparent 60%)",
           filter: "blur(60px)",
         }}
       />
@@ -157,7 +169,8 @@ export const SocialProofScene: React.FC = () => {
           width: 200,
           height: 200,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 70%)",
           transform: `translate(${orbX}px, ${-orbY}px)`,
           filter: "blur(30px)",
         }}
@@ -245,7 +258,14 @@ const AvatarRow: React.FC<{ delay: number }> = ({ delay }) => {
   });
   const y = interpolate(entrance, [0, 1], [20, 0]);
 
-  const avatarColors = ["#4ade80", "#38bdf8", "#a855f7", "#f59e0b", "#ec4899", "#06b6d4"];
+  const avatarColors = [
+    "#4ade80",
+    "#38bdf8",
+    "#a855f7",
+    "#f59e0b",
+    "#ec4899",
+    "#06b6d4",
+  ];
 
   return (
     <div
@@ -274,7 +294,13 @@ const AvatarRow: React.FC<{ delay: number }> = ({ delay }) => {
           />
         ))}
       </div>
-      <span style={{ fontSize: 15, color: "rgba(255,255,255,0.5)", fontWeight: 500 }}>
+      <span
+        style={{
+          fontSize: 15,
+          color: "rgba(255,255,255,0.5)",
+          fontWeight: 500,
+        }}
+      >
         Join 50,000+ creators
       </span>
     </div>
