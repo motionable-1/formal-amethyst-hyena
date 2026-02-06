@@ -94,6 +94,8 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
             overflow: "hidden",
             marginBottom: 20,
             position: "relative",
+            background: `radial-gradient(circle at center, ${color}25 0%, ${color}08 70%, transparent 100%)`,
+            border: `1px solid ${color}30`,
           }}
         >
           <Img
@@ -102,6 +104,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
               width: "100%",
               height: "100%",
               objectFit: "cover",
+              filter: "brightness(1.3) contrast(1.1)",
             }}
           />
         </div>
@@ -138,7 +141,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 const features = [
   {
     illustration:
-      "https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/revid-promo/1770410368240_vkx56gyhbs_revid_ai_icon.png",
+      "https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/revid-promo/1770410695160_i654ownqqa_revid_ai_brain_icon.png",
     title: "AI-Powered",
     description: "Generate scripts, scenes & edits with intelligent AI",
     color: "#4ade80",
@@ -152,7 +155,7 @@ const features = [
   },
   {
     illustration:
-      "https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/revid-promo/1770410370327_g8a8rv7bg4p_revid_chart_icon.png",
+      "https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/revid-promo/1770410695963_sforlft1yx_revid_chart_3d_icon.png",
     title: "Viral Optimized",
     description: "Built-in trends analysis for maximum engagement",
     color: "#a855f7",

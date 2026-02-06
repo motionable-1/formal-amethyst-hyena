@@ -165,15 +165,43 @@ export const PhoneShowcaseScene: React.FC = () => {
               reflection={0.1}
               scale={0.55}
             >
-              {/* Generated app screen UI */}
-              <Img
-                src="https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/revid-promo/1770410371650_ivirv0id2u_revid_phone_screen.png"
+              {/* App screen with generated image + fallback gradient */}
+              <div
                 style={{
                   width: "100%",
                   height: "100%",
-                  objectFit: "cover",
+                  position: "relative",
+                  background:
+                    "linear-gradient(180deg, #0f1218 0%, #141820 100%)",
+                  overflow: "hidden",
                 }}
-              />
+              >
+                <Img
+                  src="https://pub-e3bfc0083b0644b296a7080b21024c5f.r2.dev/revid-promo/1770410696764_9mvn96ls7s9_revid_phone_screen_v2.png"
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+                {/* Overlay UI elements for extra polish */}
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: 24,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    width: "70%",
+                    height: 34,
+                    borderRadius: 20,
+                    background: "linear-gradient(135deg, #4ade80, #22c55e)",
+                    boxShadow: "0 4px 16px rgba(74,222,128,0.4)",
+                  }}
+                />
+              </div>
             </PhoneMockup>
           </AnimatedGlow>
         </div>

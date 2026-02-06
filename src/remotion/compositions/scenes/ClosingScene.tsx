@@ -148,7 +148,7 @@ export const ClosingScene: React.FC = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          padding: "0 120px",
+          padding: "0 160px",
         }}
       >
         {/* Logo */}
@@ -194,13 +194,14 @@ export const ClosingScene: React.FC = () => {
           duration={0.6}
           ease="back.out(1.4)"
           style={{
-            fontSize: 62,
+            fontSize: 58,
             fontWeight: 800,
             color: "#ffffff",
             textAlign: "center",
-            lineHeight: 1.15,
+            lineHeight: 1.2,
             letterSpacing: "-0.03em",
             textWrap: "balance",
+            maxWidth: 900,
           }}
         >
           Start creating{" "}
